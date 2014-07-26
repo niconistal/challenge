@@ -1,0 +1,4 @@
+gone_api:
+    resource: "@GoneAPIBundle/Resources/config/routing.yml"
+    prefix:   /
+

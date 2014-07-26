@@ -3,6 +3,7 @@
 namespace Gone\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gone\APIBundle\Model\BoxInterface;
 
 /**
  * Box
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Box")
  * @ORM\Entity
  */
-class Box
+class Box implements BoxInterface
 {
     /**
      * @var string
@@ -121,5 +122,9 @@ class Box
     public function getId()
     {
         return $this->id;
+    }
+
+    public static function getValidStatus(){
+        return array('New', 'Accepted', 'To schedule pickup', 'Pickup scheduled', 'In transit', 'Received', 'Declined');
     }
 }

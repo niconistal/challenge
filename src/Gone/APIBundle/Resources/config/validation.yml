@@ -1,0 +1,12 @@
+Gone\APIBundle\Entity\Box:
+    properties:
+        name:
+            - NotBlank: ~
+            - NotNull: ~
+            - Length:
+                min: 2
+                max: 100
+                minMessage: "The name must be at least {{ limit }} characters length"
+                maxMessage: "The name cannot be longer than {{ limit }} characters length"
+        status:
+            - Choice: { callback: getValidStatus }

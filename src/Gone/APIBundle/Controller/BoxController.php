@@ -64,4 +64,65 @@
 
 	        return $box;
 	    }
+
+	    /**
+		 * Create a Box from the submitted data.
+		 *
+		 * @ApiDoc(
+		 *   resource = true,
+		 *   description = "Creates a new box from the submitted data.",
+		 *   input = "Gone\APIBundle\Form\BoxType",
+		 *   statusCodes = {
+		 *     200 = "Returned when successful",
+		 *     400 = "Returned when the form has errors"
+		 *   }
+		 * )
+		 *
+		 * @Annotations\View(
+		 *  template = "GoneAPIBundle:Box:newBox.html.twig",
+		 *  statusCode = Codes::HTTP_BAD_REQUEST,
+		 *  templateVar = "form"
+		 * )
+		 *
+		 * @param Request $request the request object
+		 *
+		 * @return FormTypeInterface|View
+		 */
+		public function postBoxAction(Request $request)
+		{
+		   try {
+		       // Hey Page handler create a new Page.
+		       $newBox = $this->container->get('gone_api.box.handler')->post(
+		           $request->request->all()
+		       );
+
+		       $routeOptions = array(
+		           'id' => $newBox->getId(),
+		           '_format' => $request->get('_format')
+		       );
+
+		       return $this->routeRedirectView('api_get_box', $routeOptions, Codes::HTTP_CREATED);
+		   } catch (InvalidFormException $exception) {
+
+		       return $exception->getForm();
+		   }
+		}
+		/**
+		 * Presents the form to use to create a new box.
+		 *
+		 * @ApiDoc(
+		 *   resource = true,
+		 *   statusCodes = {
+		 *     200 = "Returned when successful"
+		 *   }
+		 * )
+		 *
+		 * @Annotations\View()
+		 *
+		 * @return FormTypeInterface
+		 */
+		public function newBoxAction()
+		{
+		    return $this->createForm(new BoxType());
+		}
 	}

@@ -1,6 +1,6 @@
 <?php
 
-	namespace Gone/APIBundle/Model
+	namespace Gone\APIBundle\Model;
 
 	Interface BoxInterface{
 		/**

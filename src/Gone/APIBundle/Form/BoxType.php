@@ -36,6 +36,6 @@ class BoxType extends AbstractType
      */
     public function getName()
     {
-        return 'gone_apibundle_box';
+        return '';
     }
 }

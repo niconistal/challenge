@@ -1,7 +1,0 @@
-parameters:
-#    gone_api.example.class: Gone\APIBundle\Example
-
-services:
-#    gone_api.example:
-#        class: %gone_api.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

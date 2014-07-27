@@ -16,7 +16,6 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('box')
         ;
     }
     
@@ -26,6 +25,7 @@ class ProductType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'csrf_protection' => false,
             'data_class' => 'Gone\APIBundle\Entity\Product'
         ));
     }

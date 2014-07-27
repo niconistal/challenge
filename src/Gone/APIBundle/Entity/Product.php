@@ -3,6 +3,7 @@
 namespace Gone\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gone\APIBundle\Model\ProductInterface;
 
 /**
  * Product
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Product", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"}), @ORM\UniqueConstraint(name="box_id_2", columns={"box_id"})})
  * @ORM\Entity
  */
-class Product
+class Product implements ProductInterface
 {
     /**
      * @var string

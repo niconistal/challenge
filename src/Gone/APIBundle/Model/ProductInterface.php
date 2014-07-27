@@ -31,7 +31,7 @@
 	     * @param \Gone\APIBundle\Entity\Box $box
 	     * @return Product
 	     */
-	    public function setBox( $box );
+	    public function setBox(\Gone\APIBundle\Entity\Box $box = null);
 
 	    /**
 	     * Get box

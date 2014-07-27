@@ -52,17 +52,17 @@
 
         } 
 
-        public function putProductAction($slug, $id) {
+        public function putProductAction(Request $request, $slug, $id) {
             // "edit_box_product"   [PUT] /users/{slug}/comments/{id}/edit
             try {
-                if (!($product = $this->container->get('gone_api.product.handler')->getByAttr(array('id' => $id, 'box' => $slug)))) {
+                if (!($product = $this->container->get('gone_api.products.handler')->get($id))) {
                     $statusCode = Codes::HTTP_CREATED;
-                    $product = $this->container->get('gone_api.product.handler')->post(
+                    $product = $this->container->get('gone_api.products.handler')->post(
                         $request->request->all()
                     );
                 } else {
                     $statusCode = Codes::HTTP_NO_CONTENT;
-                    $product = $this->container->get('gone_api.product.handler')->put(
+                    $product = $this->container->get('gone_api.products.handler')->put(
                         $product,
                         $request->request->all()
                     );
@@ -85,7 +85,7 @@
 
         public function patchProductAction(Request $request, $id){
             try {
-                $product = $this->container->get('gone_api.product.handler')->patch(
+                $product = $this->container->get('gone_api.products.handler')->patch(
                     $this->getOr404($id),
                     $request->request->all()
                 );
@@ -106,7 +106,7 @@
 
         protected function getOr404($id)
         {
-            if (!($product = $this->container->get('gone_api.product.handler')->get($id))) {
+            if (!($product = $this->container->get('gone_api.products.handler')->get($id))) {
                 throw new NotFoundHttpException(sprintf('The resource \'%s\' was not found.',$id));
             }
 

@@ -7,3 +7,4 @@ product:
     type: rest
     parent: box
     resource: "Gone\APIBundle\Controller\\ProductController"
+    name_prefix: api_

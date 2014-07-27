@@ -48,7 +48,7 @@
         }
 
         /**
-         * Create a new Box.
+         * Create a new Product.
          *
          * @param array $parameters
          *
@@ -56,65 +56,65 @@
          */
         public function post(array $parameters)
         {
-            $box = $this->createBox();
+            $product = $this->createProduct();
 
-            return $this->processForm($box, $parameters, 'POST');
+            return $this->processForm($product, $parameters, 'POST');
         }
 
         /**
-         * Edit a Box.
+         * Edit a Product.
          *
-         * @param BoxInterface $box
+         * @param ProductInterface $product
          * @param array         $parameters
          *
-         * @return BoxInterface
+         * @return ProductInterface
          */
-        public function put(BoxInterface $box, array $parameters)
+        public function put(ProductInterface $product, array $parameters)
         {
-            return $this->processForm($box, $parameters, 'PUT');
+            return $this->processForm($product, $parameters, 'PUT');
         }
 
         /**
-         * Partially update a Box.
+         * Partially update a product.
          *
-         * @param BoxInterface $box
+         * @param BoxInterface $product
          * @param array         $parameters
          *
-         * @return BoxInterface
+         * @return ProductInterface
          */
-        public function patch(BoxInterface $box, array $parameters)
+        public function patch(ProductInterface $product, array $parameters)
         {
-            return $this->processForm($box, $parameters, 'PATCH');
+            return $this->processForm($product, $parameters, 'PATCH');
         }
 
         /**
          * Processes the form.
          *
-         * @param BoxInterface $box
+         * @param ProductInterface $product
          * @param array         $parameters
          * @param String        $method
          *
-         * @return BoxInterface
+         * @return ProductInterface
          *
          * @throws \Gone\APIBundle\Exception\InvalidFormException
          */
-        private function processForm(BoxInterface $box, array $parameters, $method = "PUT")
+        private function processForm(ProductInterface $product, array $parameters, $method = "PUT")
         {
-            $form = $this->formFactory->create(new BoxType(), $box, array('method' => $method));
+            $form = $this->formFactory->create(new ProductType(), $product, array('method' => $method));
             $form->submit($parameters, 'PATCH' !== $method);
             if ($form->isValid()) {
 
-                $box = $form->getData();
-                $this->om->persist($box);
-                $this->om->flush($box);
+                $product = $form->getData();
+                $this->om->persist($product);
+                $this->om->flush($product);
 
-                return $box;
+                return $product;
             }
 
             throw new InvalidFormException('Invalid submitted data', $form);
         }
 
-        private function createBox()
+        private function createProduct()
         {
             return new $this->entityClass();
         }

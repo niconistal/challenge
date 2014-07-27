@@ -7,13 +7,14 @@ use Gone\APIBundle\Model\ProductInterface;
 interface ProductHandlerInterface
 {
     /**
-     * Get a Box given the identifier
+     * Get a Product given the identifier
      *
      * @api
      *
+     * @param mixed $slug
      * @param mixed $id
      *
-     * @return BoxInterface
+     * @return ProductInterface
      */
     public function get($id);
 
@@ -28,37 +29,37 @@ interface ProductHandlerInterface
     public function getByAttr(array $parameters);
 
     /**
-     * Post Box, creates a new Box.
+     * Post Product, creates a new Product.
      *
      * @api
      *
      * @param array $parameters
      *
-     * @return BoxInterface
+     * @return ProductInterface
      */
     public function post(array $parameters);
 
     /**
-     * Edit a Box.
+     * Edit a Product.
      *
      * @api
      *
-     * @param BoxInterface   $box
+     * @param ProductInterface   $product
      * @param array           $parameters
      *
-     * @return BoxInterface
+     * @return ProductInterface
      */
-    public function put(BoxInterface $box, array $parameters);
+    public function put(ProductInterface $product, array $parameters);
 
     /**
-     * Partially update a Box.
+     * Partially update a Product.
      *
      * @api
      *
-     * @param BoxInterface   $box
+     * @param ProductInterface   $product
      * @param array           $parameters
      *
-     * @return BoxInterface
+     * @return ProductInterface
      */
-    public function patch(BoxInterface $box, array $parameters);
+    public function patch(ProductInterface $product, array $parameters);
 }

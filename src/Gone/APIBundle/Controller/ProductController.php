@@ -48,20 +48,68 @@
         public function getProductAction($slug, $id){
             // "get_box_product"    [GET] /box/{slug}/products/{id}
 
-        } 
-
-        public function deleteProductAction($slug, $id){
-            // "delete_box_product" [DELETE] /box/{slug}/products/{id}
+            return $this->container->get('gone_api.products.handler')->getByAttr(array('id' => $id, 'box' => $slug));
 
         } 
 
-        public function newProductAction($slug){
+        public function putProductAction($slug, $id) {
+            // "edit_box_product"   [PUT] /users/{slug}/comments/{id}/edit
+            try {
+                if (!($product = $this->container->get('gone_api.product.handler')->getByAttr(array('id' => $id, 'box' => $slug)))) {
+                    $statusCode = Codes::HTTP_CREATED;
+                    $product = $this->container->get('gone_api.product.handler')->post(
+                        $request->request->all()
+                    );
+                } else {
+                    $statusCode = Codes::HTTP_NO_CONTENT;
+                    $product = $this->container->get('gone_api.product.handler')->put(
+                        $product,
+                        $request->request->all()
+                    );
+                }
 
-        } // "new_box_comments"   [GET] /users/{slug}/comments/new
+                $routeOptions = array(
+                    'id' => $product->getId(),
+                    'slug' => $product->getBox()->getId(),
+                    '_format' => $request->get('_format')
+                );
 
-        public function editCommentAction($slug, $id)
-        {} // "edit_user_comment"   [GET] /users/{slug}/comments/{id}/edit
+                return $this->routeRedirectView('api_get_box_product', $routeOptions, $statusCode);
 
-        public function removeCommentAction($slug, $id)
-        {} // "remove_user_comment" [GET] /users/{slug}/comments/{id}/remove
+            } catch (InvalidFormException $exception) {
+
+                return $exception->getForm();
+            }
+
+        } 
+
+        public function patchProductAction(Request $request, $id){
+            try {
+                $product = $this->container->get('gone_api.product.handler')->patch(
+                    $this->getOr404($id),
+                    $request->request->all()
+                );
+
+                $routeOptions = array(
+                    'id' => $product->getId(),
+                    'slug' => $product->getBox()->getId(),
+                    '_format' => $request->get('_format')
+                );
+
+                return $this->routeRedirectView('api_get_box_product', $routeOptions, Codes::HTTP_NO_CONTENT);
+
+            } catch (InvalidFormException $exception) {
+
+                return $exception->getForm();
+            }
+        }
+
+        protected function getOr404($id)
+        {
+            if (!($product = $this->container->get('gone_api.product.handler')->get($id))) {
+                throw new NotFoundHttpException(sprintf('The resource \'%s\' was not found.',$id));
+            }
+
+            return $product;
+        }
     }

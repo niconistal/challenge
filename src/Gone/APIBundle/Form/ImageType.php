@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProductImagesType extends AbstractType
+class ImageType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,6 @@ class ProductImagesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('addedDate')
             ->add('url')
             ->add('product')
         ;
@@ -27,7 +26,8 @@ class ProductImagesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Gone\APIBundle\Entity\ProductImages'
+            'csrf_protection' => false,
+            'data_class' => 'Gone\APIBundle\Entity\Image'
         ));
     }
 
@@ -36,6 +36,6 @@ class ProductImagesType extends AbstractType
      */
     public function getName()
     {
-        return 'gone_apibundle_productimages';
+        return 'gone_apibundle_image';
     }
 }

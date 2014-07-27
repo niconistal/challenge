@@ -8,3 +8,8 @@ product:
     parent: box
     resource: "Gone\APIBundle\Controller\\ProductController"
     name_prefix: api_
+picture:
+    type: rest
+    parent: product
+    resource: "Gone\APIBundle\Controller\ImageController"
+    name_prefix: api_

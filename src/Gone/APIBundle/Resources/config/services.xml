@@ -10,6 +10,8 @@
         <parameter key="gone_api.box.class">Gone\APIBundle\Entity\Box</parameter>
         <parameter key="gone_api.products.handler.class">Gone\APIBundle\Handler\ProductHandler</parameter>
         <parameter key="gone_api.products.class">Gone\APIBundle\Entity\Product</parameter>
+        <parameter key="gone_api.images.handler.class">Gone\APIBundle\Handler\ImageHandler</parameter>
+        <parameter key="gone_api.images.class">Gone\APIBundle\Entity\Image</parameter>
     </parameters>
 
     <services>
@@ -21,6 +23,11 @@
         <service id="gone_api.products.handler" class="%gone_api.products.handler.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%gone_api.products.class%</argument>
+            <argument type="service" id="form.factory"></argument>
+        </service>
+        <service id="gone_api.images.handler" class="%gone_api.images.handler.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%gone_api.images.class%</argument>
             <argument type="service" id="form.factory"></argument>
         </service>
     </services>

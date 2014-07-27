@@ -3,6 +3,7 @@
 namespace Gone\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gone\APIBundle\Model\ImageInterface;
 
 /**
  * ProductImages
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Product_images", indexes={@ORM\Index(name="product_id", columns={"product_id"})})
  * @ORM\Entity
  */
-class ProductImages
+class Image implements ImageInterface
 {
     /**
      * @var \DateTime

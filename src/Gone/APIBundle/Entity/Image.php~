@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Product_images", indexes={@ORM\Index(name="product_id", columns={"product_id"})})
  * @ORM\Entity
  */
-class ProductImages
+class Image
 {
     /**
      * @var \DateTime

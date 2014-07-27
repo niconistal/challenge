@@ -1,5 +1,9 @@
-gone_api_homepage:
+box:
     type: rest
     prefix: /api
     resource: "Gone\APIBundle\Controller\BoxController"
     name_prefix:  api_
+product:
+    type: rest
+    parent: box
+    resource: "Gone\APIBundle\Controller\\ProductController"

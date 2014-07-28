@@ -1,0 +1,3 @@
+gone_front_end_homepage:
+    path:     /
+    defaults: { _controller: GoneFrontEndBundle:Default:index }

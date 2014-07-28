@@ -1,3 +1,7 @@
+gone_front_end:
+    resource: "@GoneFrontEndBundle/Resources/config/routing.yml"
+    prefix:   /
+
 gone_api:
     type: rest
     resource: "@GoneAPIBundle/Resources/config/routing.yml"

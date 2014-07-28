@@ -1,0 +1,20 @@
+<html>
+	<head>
+		{% stylesheets '@GoneFrontEndBundle/Resources/public/css/bootstrap.css' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+	</head>
+    <body>
+        <div id="main">Loading...</div>
+
+        {% javascripts
+            '@GoneFrontEndBundle/Resources/public/js/libs/jquery-min.js'
+            '@GoneFrontEndBundle/Resources/public/js/libs/bootstrap-min.js'
+            '@GoneFrontEndBundle/Resources/public/js/libs/underscore-min.js'
+            '@GoneFrontEndBundle/Resources/public/js/libs/backbone-min.js'
+            '@GoneFrontEndBundle/Resources/public/js/app.js'
+            '@otherapp' %}
+                <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </body>
+</html>

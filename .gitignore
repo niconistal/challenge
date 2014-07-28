@@ -10,3 +10,5 @@
 /bin/
 /composer.phar
 .DS_Store
+/web/css/
+/web/js/

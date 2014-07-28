@@ -3,7 +3,8 @@ var Router = Backbone.Router.extend({
   dispatcher : null,
 
   routes : {
-    "" : "home", 
+    "" : "home",
+    "box/:id" : "box" 
   }
 
 });

@@ -1,4 +1,4 @@
-<table class="table table-primary">
+<table class="table table-hover boxes-table">
     <thead>
         <tr>
             <th>ID</th>
@@ -9,7 +9,7 @@
     <tbody>
         {{#each boxes}}
             <tr>
-                <td>{{id}}</td>
+                <td><a href="#/box/{{id}}">{{id}}</a></td>
                 <td>{{name}}</td>
                 <td>{{status}}</td>
             </tr>

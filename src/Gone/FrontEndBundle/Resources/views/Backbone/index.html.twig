@@ -1,10 +1,18 @@
 <html>
 	<head>
-		{% stylesheets '@GoneFrontEndBundle/Resources/public/css/bootstrap.css' filter='cssrewrite' %}
+		{% stylesheets '@GoneFrontEndBundle/Resources/public/css/bootstrap.css'
+                        '@GoneFrontEndBundle/Resources/public/css/main.css'
+                        filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 	</head>
     <body>
+        <div class="jumbotron header">
+            {% image '@GoneFrontEndBundle/Resources/public/images/logo.png' %}
+                <img src="{{ asset_url }}" alt="Example" />
+            {% endimage %}
+            <h1>Gone! - Challenge Project</h1>
+        </div>
         <div id="main">Loading...</div>
 
         {% javascripts

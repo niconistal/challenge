@@ -1,0 +1,15 @@
+.boxes-table{
+	width: 600px;
+	margin : 0 auto;
+}
+.header{
+	margin: 20px 100px;
+}
+.header h1{
+	display: inline;
+	text-align: center;
+}
+.header img{
+	width: 98px;
+	height: 56px;
+}

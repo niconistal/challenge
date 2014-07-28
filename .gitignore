@@ -12,3 +12,5 @@
 .DS_Store
 /web/css/
 /web/js/
+/src/Gone/FrontEndBundle/Resources/public/js/templates/compiled/
+tools/node_modules/

@@ -45,6 +45,7 @@ assetic:
         backbone_app:
             inputs:
                 - '@GoneFrontEndBundle/Resources/public/js/templates/compiled/*.js'
+                - '@GoneFrontEndBundle/Resources/public/js/models/*.js'
                 - '@GoneFrontEndBundle/Resources/public/js/collections/*.js'
                 - '@GoneFrontEndBundle/Resources/public/js/views/*'
                 - '@GoneFrontEndBundle/Resources/public/js/router.js'

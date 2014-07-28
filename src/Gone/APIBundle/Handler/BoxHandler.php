@@ -72,7 +72,17 @@
          */
         public function put(BoxInterface $box, array $parameters)
         {
-            return $this->processForm($box, $parameters, 'PUT');
+            if ($parameters['offer']){
+                $box->setOffer($parameters['offer']);
+            }
+            if ($parameters['status']){
+                $box->setStatus($parameters['status']);
+            }
+
+            $this->om->persist($box);
+            $this->om->flush($box);
+
+            return $box;
         }
 
         /**

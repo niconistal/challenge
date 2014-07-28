@@ -1,7 +1,7 @@
 var BoxModel = Backbone.Model.extend({
 	
 	urlRoot : "/boxes",
-	boxStatus : ['New', 'Accepted', 'To schedule pickup', 'Pickup scheduled', 'In transit', 'Received' ];
+	boxStatus : ['New', 'Accepted', 'To schedule pickup', 'Pickup scheduled', 'In transit', 'Received' ],
 	nextStatus : function(){
 		var statusIndex = this.boxStatus.indexOf(this.attributes.status);
 		if ( ( statusIndex == this.boxStatus.length - 1 ) || ( statusIndex == -1 ) ){

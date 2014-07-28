@@ -42,6 +42,12 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
     assets:
+        backbone_app:
+            inputs:
+                - '@GoneFrontEndBundle/Resources/public/js/collections/*.js'
+                - '@GoneFrontEndBundle/Resources/public/js/views/*'
+                - '@GoneFrontEndBundle/Resources/public/js/router.js'
+                - '@GoneFrontEndBundle/Resources/public/js/app.js'
 
 
 # Doctrine Configuration

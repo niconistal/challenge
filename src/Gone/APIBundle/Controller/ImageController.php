@@ -58,7 +58,7 @@
                    'slug1' => $slug1
                );
 
-               return $this->routeRedirectView('api_get_box_product_image', $routeOptions, Codes::HTTP_CREATED);
+               return $this->routeRedirectView('api_get_box_product_image', $routeOptions, Codes::HTTP_OK);
             } catch (InvalidFormException $exception) {
 
                return $exception->getForm();

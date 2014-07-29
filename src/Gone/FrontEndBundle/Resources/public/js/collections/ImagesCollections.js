@@ -2,7 +2,9 @@ var ImagesCollection = Backbone.Collection.extend({
 	
 	box : null,
 
-	url: null,
+	url : null,
+
+	model : PictureModel,
 
 	initialize : function (options){
 		this.box = options.box;

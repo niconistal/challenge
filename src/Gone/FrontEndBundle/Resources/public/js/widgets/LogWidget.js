@@ -4,11 +4,15 @@ var LogWidget = Backbone.Widget.extend({
 	
 	initialize: function(options) {
     	this.logs = options.logs;
-    	console.log("initialize called");
-  	},
-
-  	render : function(){
-  		console.log("render called");
+    	var context = {
+            logs : this.logs.map( function(logs) {
+                logs.date = 
+                    logs.date.replace('T',' ').split('+')[0];
+                return logs; 
+            })
+        }
+    	var html = Handlebars.templates.LogWidgetTemplate(context);
+    	this.$el.html(html)
   	}
 
 });

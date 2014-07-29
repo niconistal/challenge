@@ -12,6 +12,11 @@
 		table-layout: fixed;
 		white-space: nowrap;
 		overflow: hidden;
+		border-collapse:collapse
+	}
+	table td{
+		word-wrap:break-word;
+		overflow: scroll;
 	}
 }
 

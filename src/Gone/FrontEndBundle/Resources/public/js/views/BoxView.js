@@ -24,8 +24,8 @@ var BoxView = Backbone.View.extend({
                             offerLocked : box.offerLocked()
                         }
                         var html = Handlebars.templates.BoxTemplate(context);
-                        $(html).find(".widget-area").LogWidget(box.attributes.log.toJSON());
                         that.$el.html(html);
+                        that.$el.find(".widget-area").LogWidget({logs :box.attributes.log });
                     }
                 });
                 

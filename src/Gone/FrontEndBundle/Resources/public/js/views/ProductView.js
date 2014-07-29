@@ -27,9 +27,9 @@ var ProductView = Backbone.View.extend({
                                 return picture; 
                             })
                         }
-                        console.log(products.toJSON());
                         var html = Handlebars.templates.ProductTemplate(context);
                         that.$el.html(html);
+                        that.$el.find(".widget-area").LogWidget({logs :products.attributes.log });
                     }
                 });
                 
@@ -76,8 +76,7 @@ var ProductView = Backbone.View.extend({
 
             },
             error: function (a, b){
-                debugger;
-                console.log("hubo un error por aqui...");
+
             }
         });
 

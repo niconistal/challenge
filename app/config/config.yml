@@ -48,6 +48,7 @@ assetic:
                 - '@GoneFrontEndBundle/Resources/public/js/models/*.js'
                 - '@GoneFrontEndBundle/Resources/public/js/collections/*.js'
                 - '@GoneFrontEndBundle/Resources/public/js/views/*'
+                - '@GoneFrontEndBundle/Resources/public/js/widgets/*'
                 - '@GoneFrontEndBundle/Resources/public/js/router.js'
                 - '@GoneFrontEndBundle/Resources/public/js/app.js'
 

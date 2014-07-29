@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Gone\APIBundle\Entity\Box" table="Box">
+  <entity name="Gone\APIBundle\Entity\Log" table="Log">
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="100" nullable="false"/>
-    <field name="status" type="string" column="status" length="100" nullable="false"/>
-    <field name="offer" type="string" column="offer" length="10" nullable="true"/>
-    <many-to-many field="log" target-entity="Log" inversed-by="box">
-      <join-table name="box_log">
+    <field name="date" type="datetime" column="date" nullable="false"/>
+    <field name="detail" type="string" column="detail" length="250" nullable="false"/>
+    <many-to-many field="product" target-entity="Product" inversed-by="log">
+      <join-table name="product_log">
         <join-columns>
-          <join-column name="box_id" referenced-column-name="id"/>
+          <join-column name="log_id" referenced-column-name="id"/>
         </join-columns>
         <inverse-join-columns>
-          <join-column name="log_id" referenced-column-name="id"/>
+          <join-column name="product_id" referenced-column-name="id"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>
+    <many-to-many field="box" target-entity="Box" mapped-by="log"/>
   </entity>
 </doctrine-mapping>

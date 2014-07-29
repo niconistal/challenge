@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Gone\APIBundle\Entity\ProductImages" table="Product_images">
+    <indexes>
+      <index name="product_id" columns="product_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="product" association-key="true"/>
+    <field name="addedDate" type="datetime" column="added_date" nullable="false"/>
+    <field name="url" type="string" column="url" length="250" nullable="false"/>
+    <one-to-one field="product" target-entity="Product">
+      <join-columns>
+        <join-column name="product_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

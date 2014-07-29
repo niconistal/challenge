@@ -96,4 +96,62 @@ class Product implements ProductInterface
     {
         return $this->box;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $log;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->log = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Product
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Add log
+     *
+     * @param \Gone\APIBundle\Entity\Log $log
+     * @return Product
+     */
+    public function addLog(\Gone\APIBundle\Entity\Log $log)
+    {
+        $this->log[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \Gone\APIBundle\Entity\Log $log
+     */
+    public function removeLog(\Gone\APIBundle\Entity\Log $log)
+    {
+        $this->log->removeElement($log);
+    }
+
+    /**
+     * Get log
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLog()
+    {
+        return $this->log;
+    }
 }

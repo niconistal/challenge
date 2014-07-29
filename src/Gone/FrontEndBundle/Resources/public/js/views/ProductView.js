@@ -39,7 +39,7 @@ var ProductView = Backbone.View.extend({
         this.products.set("name", newName);
         this.products.save(this.products.attributes, {
             success: function (products) {
-                router.navigate('/box/'+this.products.box.id+'/product/'+this.products.id, {trigger:true});
+                router.navigate('/box/'+products.attributes.box.id, {trigger:true});
             }
         });
         return false;

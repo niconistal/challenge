@@ -83,7 +83,14 @@
          */
         public function put(ProductInterface $product, array $parameters)
         {
-            return $this->processForm($product, $parameters, 'PUT');
+            if ($parameters['name']){
+                $product->setName($parameters['name']);
+            }
+
+            $this->om->persist($product);
+            $this->om->flush($product);
+
+            return $product;
         }
 
         /**

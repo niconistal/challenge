@@ -32,7 +32,9 @@ UI must be developed in JavaScript, using Angular.js or Backbone.js as a framewo
 * Make a local copy of the repo on your computer
 * Create a new mySQL database called challenge_db and dump in the file challenge_db_dump.sql located on the root of the repo.
 * Using the command line tool go to the project root and execute this:
-```$ composer install```
+```
+$ composer install
+```
 * When promped, provide the mySQL database information, root : challenge_admin, password : admin
 * After this we need to navigate into the folder /tools located on the root using the command line
 * Now we are going to install node and npm if we don't have them

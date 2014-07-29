@@ -7,6 +7,7 @@
     use Gone\APIBundle\Model\ProductInterface;
     use Gone\APIBundle\Form\ProductType;
     use Gone\APIBundle\Exception\InvalidFormException;
+    use Gone\APIBundle\Entity\Log;
 
     class ProductHandler implements ProductHandlerInterface{
 
@@ -84,6 +85,14 @@
         public function put(ProductInterface $product, array $parameters)
         {
             if ($parameters['name']){
+                if($product->getName() != $parameters['name']){
+                    $log = new Log();
+                    $log->setDetail("Name changed to ".$parameters['name']);
+                    $log->addProduct($product);
+                    $product->addLog($log);
+                    $this->om->persist($log);
+                    $this->om->flush($log);
+                }
                 $product->setName($parameters['name']);
             }
 

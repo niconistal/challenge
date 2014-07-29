@@ -127,4 +127,49 @@ class Box implements BoxInterface
     public static function getValidStatus(){
         return array('New', 'Accepted', 'To schedule pickup', 'Pickup scheduled', 'In transit', 'Received', 'Declined');
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $log;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->log = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add log
+     *
+     * @param \Gone\APIBundle\Entity\Log $log
+     * @return Box
+     */
+    public function addLog(\Gone\APIBundle\Entity\Log $log)
+    {
+        $this->log[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \Gone\APIBundle\Entity\Log $log
+     */
+    public function removeLog(\Gone\APIBundle\Entity\Log $log)
+    {
+        $this->log->removeElement($log);
+    }
+
+    /**
+     * Get log
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLog()
+    {
+        return $this->log;
+    }
 }

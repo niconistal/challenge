@@ -3,49 +3,31 @@
 namespace Gone\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gone\APIBundle\Model\ImageInterface;
 
 /**
  * ProductImages
- *
- * @ORM\Table(name="Product_images", indexes={@ORM\Index(name="product_id", columns={"product_id"})})
- * @ORM\Entity
  */
-class Image implements ImageInterface
+class ProductImages
 {
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="added_date", type="datetime", nullable=false)
      */
     private $addedDate;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=250, nullable=false)
      */
     private $url;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \Gone\APIBundle\Entity\Product
-     *
-     * @ORM\ManyToOne(targetEntity="Gone\APIBundle\Entity\Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-     * })
      */
     private $product;
-
 
 
     /**
@@ -95,6 +77,19 @@ class Image implements ImageInterface
     }
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return ProductImages
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -110,7 +105,7 @@ class Image implements ImageInterface
      * @param \Gone\APIBundle\Entity\Product $product
      * @return ProductImages
      */
-    public function setProduct(\Gone\APIBundle\Entity\Product $product = null)
+    public function setProduct(\Gone\APIBundle\Entity\Product $product)
     {
         $this->product = $product;
 

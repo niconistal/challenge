@@ -25,7 +25,7 @@ interface BoxHandlerInterface
      *
      * @return array
      */
-    public function all($limit = 5, $offset = 0);
+    public function all();
 
     /**
      * Post Box, creates a new Box.

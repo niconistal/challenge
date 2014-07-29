@@ -27,7 +27,15 @@ interface ProductHandlerInterface
      * @return array
      */
     public function getByAttr(array $parameters);
-
+    
+    /**
+     * Get a list of Products by an attribute.
+     *
+     * @param array $parameters  the attributes to filter the search
+     *
+     * @return array
+     */
+    public function getOneByAttr(array $parameters);
     /**
      * Post Product, creates a new Product.
      *
@@ -37,6 +45,7 @@ interface ProductHandlerInterface
      *
      * @return ProductInterface
      */
+   
     public function post(array $parameters);
 
     /**

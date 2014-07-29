@@ -48,6 +48,18 @@
         }
 
         /**
+         * Get a list of Products by an attribute.
+         *
+         * @param array $parameters  the attributes to filter the search
+         *
+         * @return array
+         */
+        public function getOneByAttr(array $parameters)
+        {
+            return $this->repository->findOneBy($parameters);
+        }
+
+        /**
          * Create a new Product.
          *
          * @param array $parameters

@@ -48,7 +48,7 @@
         public function getProductAction($slug, $id){
             // "get_box_product"    [GET] /box/{slug}/products/{id}
 
-            return $this->container->get('gone_api.products.handler')->getByAttr(array('id' => $id, 'box' => $slug));
+            return $this->container->get('gone_api.products.handler')->getOneByAttr(array('id' => $id, 'box' => $slug));
 
         } 
 

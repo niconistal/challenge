@@ -28,10 +28,6 @@
          *     200 = "Returned when successful"
          *   }
          * )
-         *
-         * @Annotations\QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing boxes.")
-         * @Annotations\QueryParam(name="limit", requirements="\d+", default="5", description="How many boxes to return.")
-         *
          * @Annotations\View(
          *  templateVar="boxes"
          * )
@@ -41,13 +37,10 @@
          *
          * @return array
          */
-        public function getBoxesAction(Request $request, ParamFetcherInterface $paramFetcher)
+        public function getBoxesAction(Request $request)
         {
-            $offset = $paramFetcher->get('offset');
-            $offset = null == $offset ? 0 : $offset;
-            $limit = $paramFetcher->get('limit');
 
-            return $this->container->get('gone_api.box.handler')->all($limit, $offset);
+            return $this->container->get('gone_api.box.handler')->all();
         }
 
         /**

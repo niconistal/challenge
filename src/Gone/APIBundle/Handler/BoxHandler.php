@@ -7,6 +7,7 @@
     use Gone\APIBundle\Model\BoxInterface;
     use Gone\APIBundle\Form\BoxType;
     use Gone\APIBundle\Exception\InvalidFormException;
+    use Gone\APIBundle\Entity\Log;
 
     class BoxHandler implements BoxHandlerInterface{
 
@@ -43,9 +44,9 @@
          *
          * @return array
          */
-        public function all($limit = 5, $offset = 0)
+        public function all()
         {
-            return $this->repository->findBy(array(), null, $limit, $offset);
+            return $this->repository->findBy(array(), null);
         }
 
         /**
@@ -73,13 +74,30 @@
         public function put(BoxInterface $box, array $parameters)
         {
             if ($parameters['offer']){
+                if ($box->getOffer() != $parameters['offer'] ){
+                    $log = new Log();
+                    $log->setDetail("Offer set to: $".$parameters['offer']);
+                    $log->addBox($box);
+                    $box->addLog($log);
+                    $this->om->persist($log);
+                    $this->om->flush($log);
+                }
                 $box->setOffer($parameters['offer']);
+                
             }
             if ($parameters['status']){
+                if ($box->getStatus() != $parameters['status'] ){
+                    $log = new Log();
+                    $log->setDetail("Status changed to: ".$parameters['status']);
+                    $log->addBox($box);
+                    $box->addLog($log);
+                    $this->om->persist($log);
+                    $this->om->flush($log);
+                }
                 $box->setStatus($parameters['status']);
             }
 
-            $this->om->persist($box);
+            $this->om->persist($box);      
             $this->om->flush($box);
 
             return $box;

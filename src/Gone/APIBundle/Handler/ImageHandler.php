@@ -7,6 +7,7 @@
     use Gone\APIBundle\Model\ImageInterface;
     use Gone\APIBundle\Form\ImageType;
     use Gone\APIBundle\Exception\InvalidFormException;
+    use Gone\APIBundle\Entity\Log;
 
     class ImageHandler implements ImageHandlerInterface{
 
@@ -74,6 +75,17 @@
             $image = $this->createImage();
             $image->setUrl($parameters['url']);
             $image->setProduct($product);
+
+            $log = new Log();
+            $log->setDetail("Image added");
+            $log->addProduct($product);
+            $product->addLog($log);
+
+            $this->om->persist($log);
+            $this->om->flush($log);
+            $this->om->persist($product);
+            $this->om->flush($product);
+
 
             $this->om->persist($image);
             $this->om->flush($image);

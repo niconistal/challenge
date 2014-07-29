@@ -1,18 +1,30 @@
-<table class="table table-hover boxes-table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each boxes}}
-            <tr>
-                <td><a href="#/box/{{id}}">{{id}}</a></td>
-                <td>{{name}}</td>
-                <td>{{status}}</td>
-            </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="page-title">Box List</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <table class="table table-hover boxes-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each boxes}}
+                        <tr>
+                            <td><a href="#/box/{{id}}">{{id}}</a></td>
+                            <td>{{name}}</td>
+                            <td>{{status}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

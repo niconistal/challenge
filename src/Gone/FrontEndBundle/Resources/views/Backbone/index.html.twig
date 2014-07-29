@@ -7,13 +7,18 @@
         {% endstylesheets %}
 	</head>
     <body>
-        <div class="jumbotron header">
-            {% image '@GoneFrontEndBundle/Resources/public/images/logo.png' %}
-                <img src="{{ asset_url }}" alt="Example" />
-            {% endimage %}
-            <h1>Gone! - Challenge Project</h1>
+        <div class="container header-container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <div class="jumbotron header">
+                        <img src="http://placehold.it/98x56/E8117F/ffffff" alt="Example" />
+                        <h2>Gone! - Challenge Project</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="main">Loading...</div>
+
+        <div id="main" class="container">Loading...</div>
 
         {% javascripts
             '@GoneFrontEndBundle/Resources/public/js/libs/jquery-min.js'
